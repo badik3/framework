@@ -19,10 +19,34 @@ class AuthController extends AControlerWithRedirect
     {
         return $this->html();
     }
+    public function recenzia()
+    {
+        return $this->html();
+    }
+    public function blog()
+    {
+        return $this->html();
+    }
     public function pridat()
     {
 
         return $this->html();
+    }
+    public function ucet()
+    {
+        return $this->html();
+    }
+    public function tabulka()
+    {
+        return $this->html();
+    }
+
+    public function usery()
+    {
+
+
+        $users =User::getAll();
+        return $this->json($users);
     }
 
     public function pridaterr()
@@ -30,13 +54,16 @@ class AuthController extends AControlerWithRedirect
         $_SESSION['error'] = true;
         return $this->html();
     }
+
+
+
     public function login()
     {
 
         $name = $this->request()->getValue("login");
         $passw = $this->request()->getValue("heslo");
         $jeVDatabaze = User::getMeno($name);
-        if($jeVDatabaze && $jeVDatabaze->heslo==$passw){
+        if($jeVDatabaze && password_verify($passw,$jeVDatabaze->heslo)){
             Auth::login($name,$passw);
             $this->redirectHome();
         }
@@ -51,17 +78,20 @@ class AuthController extends AControlerWithRedirect
         $this->redirectHome();
     }
 
+
+
     public function novyLogin()
     {
 
-        $name = $this->request()->getValue("login");
-        $passw = $this->request()->getValue("heslo");
-        $passwrep = $this->request()->getValue("heslorepeat");
+        $name = $this->request()->getValue("username");
+        $passw = $this->request()->getValue("password");
+        $passwrep = $this->request()->getValue("confirmPassword");
         $jeVDatabaze = User::getMeno($name);
         if(!$jeVDatabaze && $passw==$passwrep && $name!="" && $passw!=""){
             $novyUser = new User();
             $novyUser->meno = $name;
-            $novyUser->heslo = $passw;
+            $hash = password_hash($passw,PASSWORD_DEFAULT);
+            $novyUser->heslo = $hash;
             $novyUser->save();
             $this->redirectHome();
         }
@@ -76,6 +106,7 @@ class AuthController extends AControlerWithRedirect
     public function odstranitLogin()
     {
         $name = $this->request()->getValue("logindel");
+
         $jeVDatabaze = User::getMeno($name);
         if($jeVDatabaze && $name != 'admin'){
             $jeVDatabaze->deleteLogin();
@@ -87,5 +118,26 @@ class AuthController extends AControlerWithRedirect
 
         }
 
+    }
+
+    public function updateHeslo()
+    {
+        $name = $_SESSION["name"];
+        $passw = $this->request()->getValue("heslo");
+        $passwrep = $this->request()->getValue("heslorepeat");
+        if ($passw == $passwrep && $name != "" && $passw != "") {
+            $jeVDatabaze = User::getMeno($name);
+            if ($jeVDatabaze && $name != 'admin') {
+                $jeVDatabaze->updatePassword(password_hash($passw,PASSWORD_DEFAULT), $name);
+                $this->redirectUcet();
+            }
+        }
+        else{
+
+            $_SESSION['error'] = true;
+            $this->redirectUcet();
+
+
+        }
     }
 }

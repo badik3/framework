@@ -225,4 +225,31 @@ abstract class Model implements \JsonSerializable
             throw new \Exception('Query failed: ' . $e->getMessage());
         }
     }
+
+
+    public function deleteAll($cislo)
+    {
+        self::connect();
+        try {
+            $sql = "DELETE FROM comments WHERE post_id=?";
+            $stmt = self::$connection->prepare($sql);
+            $stmt->execute([$cislo]);
+        } catch (PDOException $e) {
+            throw new \Exception('Query failed: ' . $e->getMessage());
+        }
+    }
+
+    public function updatePassword( $heslo, $meno )
+    {
+        self::connect();
+        try {
+            $sql = "UPDATE users SET heslo =?  WHERE meno=?";
+            $stmt = self::$connection->prepare($sql);
+            $stmt->execute([$heslo,$meno]);
+        } catch (PDOException $e) {
+            throw new \Exception('Query failed: ' . $e->getMessage());
+        }
+    }
+
+
 }

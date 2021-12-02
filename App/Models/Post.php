@@ -9,10 +9,16 @@ class Post extends Model
     public $id;
     public $likes;
     public $file;
+    public $nadpis;
+    public $popis;
+    public $telefon;
+    public $lokalita;
+    public $rozloha;
+    public $cena;
 
     static public function setDbColumns()
     {
-        return ['id','likes','file'];
+        return ['id','likes','file','nadpis','popis','telefon','lokalita','rozloha','cena'];
     }
 
     static public function setTableName()

@@ -1,5 +1,3 @@
-
-
 window.onload = function () {
     for (let divko of document.querySelectorAll("div[data-tooltip]")) {
         divko.onmouseenter = function () {
@@ -18,6 +16,7 @@ buttons.forEach(btn=> {
         let y = e.clientY - (e.target.offsetTop)/50;
 
         let ripples = document.createElement('span');
+        ripples.setAttribute("id","spany");
         ripples.style.left = x +'px';
         ripples.style.top = y + 'px';
         this.appendChild(ripples);

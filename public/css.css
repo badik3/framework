@@ -2,3 +2,12 @@ nav.navbar{
     background-color: #252d3f;
     position: sticky;
 }
+
+
+#spod{
+    position: sticky;
+    left: 0;
+    width: 100%;
+    background-color: #252d3f;
+    color: #fefefe;
+}

@@ -14,10 +14,16 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="Style/loginFormular.css">
+    <link rel="stylesheet" href="Style/pridat.css">
 
 
 </head>
 <script type="text/javascript" src="Scripts/formularInfo.js"></script>
+<script type="text/javascript" src="Scripts/script.js"></script>
+
+
+<!-- JQUERY load -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
 
 <?php if($_SESSION['error'] == true){ ?><div class="alert alert-danger alert-dismissible">
@@ -31,51 +37,58 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <?= $_SESSION['errorData'] ?></div>
 <?php } ?>
-<div class="col-md-6" ">
 
+<div class="container pb-5">
+    <div class="row d-flex justify-content-center align-items-center pb-2">
+        <div class="col-md-4">
+            <label>Meno</label>
+            <input id="user-name" type="text" class="form-control login-input" placeholder="Zadajte vaše prihlasovacie meno">
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-4">
+            <label >Heslo:</label>
+            <input id = "password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   title="Musí obsahovať aspon jedno číslo a jedno velké a malé písmeno, a heslo musí mať aspon 8 znakov" required class="form-control login-input" placeholder="Zadajte vaše heslo">
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-4">
+            <label>Zadajte znovu heslo:</label>
+            <input id = "confirm-password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   title="Musí obsahovať aspon jedno číslo a jedno velké a malé písmeno, a heslo musí mať aspon 8 znakov" required class="form-control login-input" placeholder="Zadajte znovu vaše heslo">
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-4">
+            <button class="btn-css login-btn btn btn-secondary" onclick="addUser()">Vytvoriť účet</button>
+<div class="col-md-6">
     <div class="text" data-tooltip="Pre vytvorenie noveho prihlasenia je potrebne pridat novy unikatny login zadat nove heslo a zopakovat heslo"><i class="bi bi-exclamation-circle"></i></div>
 
-    <form method="post" action="/framework/?c=auth&a=novyLogin">
-        <div class="col-md-5">
-            <label for="exampleFormControlInput1" class="form-label">Nový Login</label>
-            <input type="text" class="form-control " name="login" id="exampleFormControlInput1" placeholder="name" required>
-        </div>
-        <div class="col-md-5">
-            <label for="exampleFormControlInput1" class="form-label">Heslo</label>
-            <input type="password" class="form-control" name="heslo" id="exampleFormControlInput2" placeholder="password" required>
-        </div>
-        <div class="col-md-5">
-            <label for="exampleFormControlInput1" class="form-label">Zopakuj Heslo</label>
-            <input type="password" class="form-control" name="heslorepeat" id="exampleFormControlInput3" placeholder="password" required>
-        </div>
-        <a><input type="submit" value="Vytvorit Login"></div></a>
-</form>
-        <div  class="nwm col-md-6" ">
-        <form method="post" action="/framework/?c=auth&a=odstranitLogin">
-            <div class="col-md-5">
-                <label for="exampleFormControlInput1" class="form-label">Odstranit Login</label>
-                <input type="text" class="form-control " name="logindel" id="exampleFormControlInput5" placeholder="name" required>
-            </div>
-            <a><input type="submit" value="Odstranit"></div></a>
-            </div>
 
-<br>
+</div>
 <div>
-    <table >
-        <tr>
-            <th>Meno</th>
-        </tr>
-        <?php foreach ($toto = \App\Models\User::getAll() as $user) { ?>
-        <tr>
-            <td><?= $user->meno ?></td>
-        </tr>
-        <?php } ?>
-    </table>
+    <br>
 </div>
 
+<div  id="content" class="col-md-6">
 
+    <table id="mazanie">
+        <tr>
+            <th>Meno</th>
+        </tr >
+        <?php foreach ($toto =\App\Models\User::getAll() as $user) { ?>
+            <tr>
+                <td><?= $user->meno ?></td>
+                <td><a href="?c=auth&a=odstranitLogin&logindel=<?= $user->meno ?>"><button>ZMAZ</button></a></td>
+            </tr>
+        <?php } ?>
+    </table>
 
-</form>
+</div>
+
+<br>
+
 </body>
 
 </html>

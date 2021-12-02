@@ -1,0 +1,70 @@
+.stars-outer {
+    position: relative;
+    display: inline-block;
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.stars-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #ccc;
+}
+
+.stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #f8ce0b;
+}
+.bi-star-fill::before {
+    content: "\f586";
+    color: gold;
+}
+
+input[type=number]{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
+input[type=text]{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
+input[type=password]{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
+input[type=file]{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
+
+#formFileLg{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
+
+#textarea{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
+
+#recenzieTab{
+    overflow-y: auto;
+    height: 600px;
+}
+#nadpR{
+    padding-top: 50px;
+}
+
+#boxRecenzie{
+    width: 500px;
+}
