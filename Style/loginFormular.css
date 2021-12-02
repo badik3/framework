@@ -98,4 +98,20 @@ input[type=submit]{
 }
 
 
+input[type=text]{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
+input[type=password]{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
+input[type=file]{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}
 
+#formFileLg{
+    background-color: rgba(123,123,123,0.5);
+    border: 1px solid red;
+}

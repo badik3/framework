@@ -77,7 +77,7 @@ class AuthController extends AControlerWithRedirect
     {
         $name = $this->request()->getValue("logindel");
         $jeVDatabaze = User::getMeno($name);
-        if($jeVDatabaze){
+        if($jeVDatabaze && $name != 'admin'){
             $jeVDatabaze->deleteLogin();
             $this->redirectPridat();
         }

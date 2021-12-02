@@ -6,7 +6,6 @@
 <html lang="sk">
 <head>
     <link rel="stylesheet" href="Style/index.css">
-
 </head>
 <body>
 <div id="progressbar"></div>
@@ -15,7 +14,7 @@
     <div class="row justify-content-md-center">
         <div class="col col-6 ">
             <?php foreach ($data as $post) { ?>
-                <div class="card " style="width: 50rem">
+                <div class="card " style="width: 50rem ; background-color: rgba(255,0,0,0.2)">
                     <img src="/framework/<?= \App\Config\Configuration::UPLOAD_DIR . "/" . $post->file ?>"
                          class="card-img-top" alt="...">
                     <div class="card-body">
@@ -36,7 +35,7 @@
                                     <hr>
                                 <?php } ?>
                                 <form action="/framework/?c=home&a=addComment" method="post">
-                                    <input type="text" name="comment">
+                                    <input type="text" name="comment" style="background-color: rgba(123,123,123,0.5)">
                                     <input type="hidden" name="postid" value="<?= $post->id ?>">
                                     <input type="submit" value="Pridaj">
                                 </form>

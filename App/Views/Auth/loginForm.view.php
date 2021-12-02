@@ -16,7 +16,7 @@
 <script type="text/javascript" src="Scripts/formularInfo.js"></script>
 <body>
 
- <div class="text" data-tooltip="Pre moznost comentovania a lajkovania obrazkov je nutne mat vytvoreny ucet
+ <div id="tooltip" class="text" data-tooltip="Pre moznost comentovania a lajkovania obrazkov je nutne mat vytvoreny ucet
                     a byt prihlaseny"><i class="bi bi-exclamation-circle"></i></div>
 
 <form class="row g-3" method="post" action="/framework/?c=auth&a=login&heslo">

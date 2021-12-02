@@ -27,7 +27,7 @@
 
 <?php } ?>
 <?php if($_SESSION['errorData'] == true){ ?><div class="alert alert-danger alert-dismissible">
-    <label>Takyto login v databaze neexistuje.</label>
+    <label>Takýto login v databáze neexistuje alebo ste sa snažili odstránit Administrátora.</label>
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <?= $_SESSION['errorData'] ?></div>
 <?php } ?>
