@@ -1,0 +1,101 @@
+
+
+body{
+    min-height: 100vh;
+    flex-direction: column;
+    background: darkgrey;
+}
+div.col-md-1{
+    align-items: center;
+
+}
+div[data-tooltip]{
+    border: 2px;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+}
+div[data-tooltip] > div{
+    position: absolute;
+    background-color: gray;
+    border: 2px solid black;
+    padding: 4px;
+    z-index: 1;
+}
+div.text{
+    border: 2px solid black;
+    background-color: rgba(255,0,0,0.5);
+}
+
+
+
+a > input[type=submit]{
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    padding: 12px 36px;
+    margin: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    background: linear-gradient(90deg,#252d3f,#cd2528);
+    text-align-last: center;
+}
+
+span{
+    position: absolute;
+    background: #f11;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+
+    0%
+    {
+        width: 0px;
+        height: 0px;
+        opacity: 10%;
+    }
+    100%
+    {
+        width: 100px;
+        height: 100px;
+        opacity: 10%;
+    }
+
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+div.nwm{
+    display: inline-table;
+    align-items: end;
+}
+
+
+input[type=submit]{
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    padding: 0px 36px;
+    margin: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    background: linear-gradient(90deg,#252d3f,#cd2528);
+    text-align-last: center;
+}
+
+
+
